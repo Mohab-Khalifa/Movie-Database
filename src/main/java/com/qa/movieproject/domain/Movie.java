@@ -1,11 +1,19 @@
 package com.qa.movieproject.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity // tells the DB to create table with attributes as fields
 public class Movie {
 
 	// Attributes
+
+	@Id // tells Spring this is the Primary Key
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT private integer id
+	private Integer id;
+
 	private String title;
 	private Integer releaseYear;
 	private String genre;
