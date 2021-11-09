@@ -27,11 +27,11 @@ public class MovieController {
 	// Creating a private list because I am not implementing the DB yet
 	private List<Movie> movies = new ArrayList<>();
 
-	// Test get request
-	@GetMapping("/hey") // listens for a request at /hey
-	public String greetYou() {
-		return "Hey there!"; // sends response
-	}
+//	// Test get request
+//	@GetMapping("/hey") // listens for a request at /hey
+//	public String greetYou() {
+//		return "Hey there!"; // sends response
+//	}
 
 	@PostMapping("/create-movie") // triggering a post request
 	public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inserting the movie object in the request
