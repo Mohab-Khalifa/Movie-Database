@@ -3,6 +3,8 @@ package com.qa.movieproject.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,10 +34,12 @@ public class MovieController {
 	}
 
 	@PostMapping("/create-movie") // triggering a post request
-	public Movie createMovie(@RequestBody Movie newMovie) { // inserting the movie object in the request body
+	public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inserting the movie object in the request
+																			// body
 
 		this.movies.add(newMovie);
-		return this.movies.get(this.movies.size() - 1); // returning the most recently added
+		Movie responseBody = this.movies.get(this.movies.size() - 1);
+		return new ResponseEntity<Movie>(responseBody, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/getAllMovies")
