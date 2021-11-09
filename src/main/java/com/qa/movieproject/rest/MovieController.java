@@ -33,34 +33,48 @@ public class MovieController {
 //		return "Hey there!"; // sends response
 //	}
 
+	// Create - adding a movie
 	@PostMapping("/create-movie") // triggering a post request
 	public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inserting the movie object in the request
 																			// body
-
 		this.movies.add(newMovie);
 		Movie responseBody = this.movies.get(this.movies.size() - 1);
 		return new ResponseEntity<Movie>(responseBody, HttpStatus.CREATED);
 	}
 
+	// Read - getting the whole list of movies
 	@GetMapping("/getAllMovies")
-	public List<Movie> getMovies() {
-		return this.movies;
+	public ResponseEntity<List<Movie>> getMovies() {
+		return ResponseEntity.ok(this.movies);
 	}
 
-	// Getting a specific index in the list
-	@GetMapping("/get-movie/{id}") // getMovie with id of {id}
-	public Movie getMovie(@PathVariable Integer id) {
-		return this.movies.get(id);
+	// Read - Getting a specific index in the list
+	@GetMapping("/get-movie/{id}") // picks movie with id of {id}
+	public ResponseEntity<Movie> getMovie(@PathVariable Integer id) {
+		Movie responseBody = this.movies.get(id);
+		return new ResponseEntity<Movie>(responseBody, HttpStatus.OK);
 	}
 
+	// Update
 	@PutMapping("/replace-movie/{id}")
-	public Movie replaceMovie(@PathVariable Integer id, @RequestBody Movie newMovie) {
-		return this.movies.set(id, newMovie);
+	public ResponseEntity<Movie> replaceMovie(@PathVariable Integer id, @RequestBody Movie newMovie) {
+		System.out.println("Replacing movie with id " + id + " with " + newMovie);
+		Movie movieChange = this.movies.set(id, newMovie); // replaces the movie at the index
+		return new ResponseEntity<Movie>(movieChange, HttpStatus.ACCEPTED);
 	}
 
+	// Delete
 	@DeleteMapping("/remove-movie/{id}")
-	public boolean removeMovie(@PathVariable Integer id) {
-		return this.movies.remove(id);
+	public ResponseEntity<Movie> removeMovie(@PathVariable Integer id) {
+		System.out.println("Removing movie with id " + id);
+		Movie toRemove = this.movies.get(id);
+		this.movies.remove(id.intValue()); // removes object
+		boolean removed = !this.movies.contains(toRemove);
+		if (removed) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 }
