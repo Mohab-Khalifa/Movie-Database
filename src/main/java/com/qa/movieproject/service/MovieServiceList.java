@@ -18,7 +18,7 @@ public class MovieServiceList implements MovieService {
 	}
 
 	@Override
-	public Movie addMovie(Movie newMovie) {
+	public Movie addMovie(Movie newMovie) { // a movie object in the request + response
 		this.moviesList.add(newMovie);
 		return this.moviesList.get(this.moviesList.size() - 1);
 	}

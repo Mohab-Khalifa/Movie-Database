@@ -34,7 +34,7 @@ public class MovieController {
 //	}
 
 	// Create - adding a movie
-	@PostMapping("/create-movie") // triggering a post request
+	@PostMapping("/add-movie") // triggering a post request
 	public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inserting the movie object in the request
 																			// body
 		this.movies.add(newMovie);
