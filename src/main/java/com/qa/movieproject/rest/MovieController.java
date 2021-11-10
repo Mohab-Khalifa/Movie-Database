@@ -44,8 +44,8 @@ public class MovieController {
 
 	// Read - getting the whole list of movies
 	@GetMapping("/getAllMovies")
-	public ResponseEntity<List<Movie>> getMovies() {
-		return ResponseEntity.ok(this.movies);
+	public List<Movie> getMovies() {
+		return this.movies;
 	}
 
 	// Read - Getting a specific index in the list
