@@ -35,9 +35,9 @@ public class MovieServiceList implements MovieService {
 
 	@Override
 	public boolean removeMovie(Integer id) {
-		Movie removeMovie = this.moviesList.get(id);
+		Movie toRemove = this.moviesList.get(id);
 		this.moviesList.remove(id.intValue());
-		return !this.moviesList.contains(removeMovie);
+		return !this.moviesList.contains(toRemove);
 	}
 
 }
