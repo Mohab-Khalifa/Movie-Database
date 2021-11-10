@@ -34,7 +34,7 @@ public class MovieController {
 //	}
 
 	// Create - adding a movie
-	@PostMapping("/create-movie") // triggering a post request
+	@PostMapping("/add-movie") // triggering a post request
 	public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inserting the movie object in the request
 																			// body
 		this.movies.add(newMovie);
@@ -44,8 +44,8 @@ public class MovieController {
 
 	// Read - getting the whole list of movies
 	@GetMapping("/getAllMovies")
-	public ResponseEntity<List<Movie>> getMovies() {
-		return ResponseEntity.ok(this.movies);
+	public List<Movie> getMovies() {
+		return this.movies;
 	}
 
 	// Read - Getting a specific index in the list
