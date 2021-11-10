@@ -33,6 +33,16 @@ public class Movie {
 		this.runtime = runtime;
 	}
 
+	// Contructor 2 (includes id)
+	public Movie(Integer id, String title, Integer releaseYear, String genre, int runtime) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.releaseYear = releaseYear;
+		this.genre = genre;
+		this.runtime = runtime;
+	}
+
 	// Getters & Setters
 	public String getTitle() {
 		return title;
