@@ -5,17 +5,26 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
 import com.qa.movieproject.domain.Movie;
 import com.qa.movieproject.repo.MovieRepo;
 
+@Primary
+@Service
 public class MovieServiceDB implements MovieService {
 
 	private MovieRepo repo;
 
+	public MovieServiceDB(MovieRepo repo) {
+		super();
+		this.repo = repo;
+	}
+
 	@Override
 	public List<Movie> getMovies() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.repo.findAll();
 	}
 
 	@Override
