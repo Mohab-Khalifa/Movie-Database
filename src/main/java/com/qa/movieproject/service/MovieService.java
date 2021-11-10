@@ -7,9 +7,9 @@ import com.qa.movieproject.domain.Movie;
 //This contains the CRUD functionality
 public interface MovieService {
 
-	List<Movie> getMovies();
-
 	Movie addMovie(Movie newMovie);
+
+	List<Movie> getMovies();
 
 	Movie getMovie(Integer id);
 
