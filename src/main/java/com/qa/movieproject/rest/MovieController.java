@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.movieproject.domain.Movie;
 import com.qa.movieproject.service.MovieService;
-import com.qa.movieproject.service.MovieServiceDB;
 
 @RestController // this is a specialised version of the controller. It includes the @Controller
 				// and
@@ -25,7 +24,7 @@ import com.qa.movieproject.service.MovieServiceDB;
 @RequestMapping
 public class MovieController {
 
-	private MovieService service = new MovieServiceDB();
+	private MovieService service;
 
 	public MovieController(MovieService service) {
 		super();
