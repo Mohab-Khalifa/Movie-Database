@@ -84,11 +84,10 @@ public class Movie {
 		this.runtime = runtime;
 	}
 
-	// ToString
 	@Override
 	public String toString() {
-		return "Movie [Title=" + title + ", releaseYear=" + releaseYear + ", Genre=" + genre + ", runtime=" + runtime
-				+ "]";
+		return "Movie [id=" + id + ", title=" + title + ", releaseYear=" + releaseYear + ", genre=" + genre
+				+ ", runtime=" + runtime + "]";
 	}
 
 }
