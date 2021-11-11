@@ -94,7 +94,7 @@ public class MovieIntegrationTest {
 
 	@Test
 	void testDelete() throws Exception {
-		this.mvc.perform(delete("/remove-movie/1"));
+		this.mvc.perform(delete("/remove-movie/1")).andExpect(status().isNoContent());
 	}
 
 }
