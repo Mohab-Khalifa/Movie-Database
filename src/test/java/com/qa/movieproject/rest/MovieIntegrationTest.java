@@ -15,6 +15,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -24,9 +26,12 @@ import com.qa.movieproject.domain.Movie;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // boots the entire context
 @AutoConfigureMockMvc // creates the MockMVC object for sending the test requests
+@Sql(scripts = { "classpath:movie-schema.sql",
+		"classpath:movie-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD) // runs schema and data file before each test
+
 public class MovieIntegrationTest {
 
-	@Autowired
+	@Autowired // enables automatic dependency injection
 	private MockMvc mvc; // using MockMvc to perform the integration testing using Junit
 	// we can leverage the Spring MVC test
 	// framework in order to write and run integration tests that test controller
@@ -37,15 +42,16 @@ public class MovieIntegrationTest {
 
 	@Test
 	void testAdd() throws Exception {
-		Movie requestBody = new Movie("Inception", 2010, "Thriller", 138);
+		Movie requestBody = new Movie("Inception", 2010, "Thriller", 138); // creating object for the test
 		String requestBodyAsJSON = this.mapper.writeValueAsString(requestBody);
 
 		RequestBuilder request = post("/add-movie").contentType(MediaType.APPLICATION_JSON).content(requestBodyAsJSON);
 		// this sets up the test request^
 
-		Movie responseBody = new Movie("Inception", 2010, "Thriller", 138); // creating what the expected value should
-																			// be
-		String responseBodyAsJSON = this.mapper.writeValueAsString(requestBody);
+		Movie responseBody = new Movie(1, "Inception", 2010, "Thriller", 138); // creating what the expected value
+																				// should be
+
+		String responseBodyAsJSON = this.mapper.writeValueAsString(responseBody);
 
 		ResultMatcher checkStatus = status().isCreated(); // checks the status code of 201
 		ResultMatcher checkBody = content().json(responseBodyAsJSON); // checks that the body matches the example
@@ -59,14 +65,13 @@ public class MovieIntegrationTest {
 //		this.mvc.perform(get("/get-movie/7849")).andExpect(status().isNotFound());
 //	}
 
-	@Test // needs annotation
+	@Test
 	void testGetAll() throws Exception {
 
-		RequestBuilder request = get("/getAll");
-
+		RequestBuilder request = get("/getAllMovies");
 		ResultMatcher checkStatus = status().isOk();
 
-		Movie movie = new Movie("Inception", 2010, "Thriller", 138);
+		Movie movie = new Movie(1, "Inception", 2010, "Thriller", 138);
 		List<Movie> movies = List.of(movie);
 		String responseBody = this.mapper.writeValueAsString(movies);
 		ResultMatcher checkBody = content().json(responseBody);
@@ -76,13 +81,13 @@ public class MovieIntegrationTest {
 
 	@Test
 	void testGet() throws Exception {
-		final String responseBody = this.mapper.writeValueAsString(new Movie("Inception", 2010, "Thriller", 138));
+		final String responseBody = this.mapper.writeValueAsString(new Movie(1, "Inception", 2010, "Thriller", 138));
 		this.mvc.perform(get("/get-movie/1")).andExpect(status().isOk()).andExpect(content().json(responseBody));
 	}
 
 	@Test
 	void testReplace() throws Exception {
-		final String responseBody = this.mapper.writeValueAsString(new Movie("Inception", 2010, "Thriller", 138));
+		final String responseBody = this.mapper.writeValueAsString(new Movie(1, "Inception", 2010, "Thriller", 138));
 
 		RequestBuilder request = put("/replace-movie/1").contentType(MediaType.APPLICATION_JSON).content(responseBody);
 
