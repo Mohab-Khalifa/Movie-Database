@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity // tells the DB to create table with attributes as fields
+@Table(name = "movie")
 public class Movie {
 
 	// Attributes
@@ -33,7 +35,25 @@ public class Movie {
 		this.runtime = runtime;
 	}
 
+	// Contructor 2 (includes id)
+	public Movie(Integer id, String title, Integer releaseYear, String genre, int runtime) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.releaseYear = releaseYear;
+		this.genre = genre;
+		this.runtime = runtime;
+	}
+
 	// Getters & Setters
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -64,13 +84,6 @@ public class Movie {
 
 	public void setRuntime(int runtime) {
 		this.runtime = runtime;
-	}
-
-	// ToString
-	@Override
-	public String toString() {
-		return "Movie [Title=" + title + ", releaseYear=" + releaseYear + ", Genre=" + genre + ", runtime=" + runtime
-				+ "]";
 	}
 
 }
