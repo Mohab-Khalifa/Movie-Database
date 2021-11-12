@@ -4,11 +4,11 @@ create table
 	 
 (
 	
-	(id integer AUTO_INCREMENT, 
+	id integer AUTO_INCREMENT, 
 	genre varchar(255), 
 	release_year integer, 
 	runtime integer not null, 
 	title varchar(255), 
-	primary key (id))
+	primary key (id)
 		
 );

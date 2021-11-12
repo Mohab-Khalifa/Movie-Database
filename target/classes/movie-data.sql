@@ -1,5 +1,5 @@
 INSERT INTO
-			`human`
+			`movie`
 		(`genre`, `release_year`, `runtime`, `title`)
 			
 			values
