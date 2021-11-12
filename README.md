@@ -73,4 +73,59 @@ Based on all the quality of teaching in the QA Academy, I believed they prepared
 
 ### CRUD - Create 
 
-<img src="https://cloud.githubusercontent.com/assets/4307137/10105290/2a183f3a-63ae-11e5-9380-50d9f6d8afd6.png" width="15%"></img> 
+```
+// Create - adding a movie
+@PostMapping("/add-movie") // triggering a post request
+public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inserting the movie object in the request body
+  Movie responseBody = this.service.addMovie(newMovie);
+  return new ResponseEntity<Movie>(responseBody, HttpStatus.CREATED);
+}
+```
+
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Post%20Request.PNG" width="100%"></img> 
+
+### CRUD - Read
+
+```
+// Read - getting the whole list of movies
+@GetMapping("/getAllMovies")
+public ResponseEntity<List<Movie>> getMovies() {
+  List<Movie> responseBody = this.service.getMovies();
+  return new ResponseEntity<List<Movie>>(responseBody, HttpStatus.OK);
+	}
+```
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Get%20Request.PNG" width="100%"></img> 
+
+### CRUD - Update
+
+```
+// Update
+@PutMapping("/replace-movie/{id}")
+public ResponseEntity<Movie> replaceMovie(@PathVariable Integer id, @RequestBody Movie newMovie) {
+  System.out.println("Replacing movie with id " + id + " with " + newMovie);
+  Movie movieChange = this.service.replaceMovie(id, newMovie); // replaces the movie at the index
+  return new ResponseEntity<Movie>(movieChange, HttpStatus.ACCEPTED);
+}
+```
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Put%20Request.PNG" width="100%"></img> 
+
+### CRUD - Delete
+
+```
+// Delete
+@DeleteMapping("/remove-movie/{id}")
+public ResponseEntity<Movie> removeMovie(@PathVariable Integer id) {
+  System.out.println("Removing movie with id " + id);
+  Movie toRemove = this.service.getMovie(id);
+  this.service.removeMovie(id.intValue()); // removes object
+  @SuppressWarnings("unlikely-arg-type")
+  boolean removed = !this.service.equals(toRemove);
+  if (removed) {
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  } else {
+    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+}
+```
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Delete%20Request.PNG" width="100%"></img>
+
