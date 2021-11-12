@@ -16,7 +16,7 @@ import com.qa.movieproject.repo.MovieRepo;
 import com.qa.movieproject.service.MovieService;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class MovieServiveDBTest {
+public class MovieServiceDBTest {
 
 	@Autowired
 	private MovieService service;
@@ -81,23 +81,6 @@ public class MovieServiveDBTest {
 
 		// verify
 		Mockito.verify(this.repo, Mockito.times(1)).findAll();
-
-	}
-
-	@Test
-	void testDelete() {
-
-		// GIVEN
-		Integer id = 1;
-
-		// WHEN
-		Mockito.when(this.repo.existsById(id)).thenReturn(false);
-
-		// THEN
-		Assertions.assertThat(this.service.delete(id)).isTrue();
-
-		// verify
-		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
 
 	}
 
