@@ -25,7 +25,7 @@ public class Movie {
 	}
 
 	// Constructor
-	public Movie(String title, Integer releaseYear, String genre, int runtime, Integer id) {
+	public Movie(String title, Integer releaseYear, String genre, int runtime) {
 		super();
 		this.title = title;
 		this.releaseYear = releaseYear;
