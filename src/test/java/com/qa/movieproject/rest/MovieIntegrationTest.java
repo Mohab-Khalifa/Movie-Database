@@ -27,7 +27,8 @@ import com.qa.movieproject.domain.Movie;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // boots the entire context
 @AutoConfigureMockMvc // creates the MockMVC object for sending the test requests
 @Sql(scripts = { "classpath:movie-schema.sql",
-		"classpath:movie-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD) // runs schema and data file before each test
+		"classpath:movie-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD) // runs schema and data file
+																							// before each test
 
 public class MovieIntegrationTest {
 
@@ -48,7 +49,7 @@ public class MovieIntegrationTest {
 		RequestBuilder request = post("/add-movie").contentType(MediaType.APPLICATION_JSON).content(requestBodyAsJSON);
 		// this sets up the test request^
 
-		Movie responseBody = new Movie(1, "Inception", 2010, "Thriller", 138); // creating what the expected value
+		Movie responseBody = new Movie(2, "Inception", 2010, "Thriller", 138); // creating what the expected value
 																				// should be
 
 		String responseBodyAsJSON = this.mapper.writeValueAsString(responseBody);
