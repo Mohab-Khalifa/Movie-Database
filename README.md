@@ -81,7 +81,7 @@ public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inser
   return new ResponseEntity<Movie>(responseBody, HttpStatus.CREATED);
 }
 ```
-Image below shows a post request, creating my first obect "Inception".
+Image below shows a 'Post Request', creating my first obect "Inception".
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Post%20Request%20V2.PNG" width="100%"></img> 
 
 This shows proof of persistence as it is stored locally in my MySQL database.
@@ -100,7 +100,7 @@ public ResponseEntity<List<Movie>> getMovies() {
   return new ResponseEntity<List<Movie>>(responseBody, HttpStatus.OK);
 	}
 ```
-This image shows the get request that reads the objects i have created, "inception" and "Shutter Island".
+This image shows the 'Get Request' that reads the objects i have created, "inception" and "Shutter Island".
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Get%20Request%20V2.PNG" width="100%"></img> 
 
 Again shows proof of persistence containing both objects I have created.
@@ -117,7 +117,7 @@ public ResponseEntity<Movie> replaceMovie(@PathVariable Integer id, @RequestBody
   return new ResponseEntity<Movie>(movieChange, HttpStatus.ACCEPTED);
 }
 ```
-This image below shows a Put Request, updating the "Shutter Island" object into another "Inception" object. Thus creating a duplicate.
+This image below shows a 'Put Request', updating the "Shutter Island" object into another "Inception" object. Thus creating a duplicate.
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Put%20Request%20V2.PNG" width="100%"></img> 
 
 Also shown in MySQL db containing the duplicate object now.
@@ -141,7 +141,7 @@ public ResponseEntity<Movie> removeMovie(@PathVariable Integer id) {
   }
 }
 ```
-Since I don't need two of the same movie, I made a Delete Request which removed one of the objects(movie).
+Since I don't need two of the same movie, I made a 'Delete Request' which removed one of the objects(movie).
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Delete%20Request%20V2.PNG" width="100%"></img>
 
 Now MySQL only contains one "Inception" again.
