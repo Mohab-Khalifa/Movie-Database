@@ -147,4 +147,9 @@ Since I don't need two of the same movie, I made a 'Delete Request' which remove
 Now MySQL only contains one "Inception" again.
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Delete%20Persistence%20V2.PNG" width="100%"></img>
 
+## Coverage Test Screenshot
+
+The target coverage I had to reach in the src/main/java was a minimum of 60%. This image clearly shows that I have reached 90.5% coverage in my src/main/java. 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Coverage%20Test%20Screenshot.PNG" width="100%"></img>
+
 
