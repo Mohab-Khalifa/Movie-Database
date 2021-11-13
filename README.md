@@ -82,7 +82,11 @@ public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inser
 }
 ```
 
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Post%20Request.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Post%20Request%20V2.PNG" width="100%"></img> 
+
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Create%20Persistence%20V2.PNG" width="100%"></img> 
+
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Post%20Request%20second%20pic%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Read
 
@@ -94,7 +98,9 @@ public ResponseEntity<List<Movie>> getMovies() {
   return new ResponseEntity<List<Movie>>(responseBody, HttpStatus.OK);
 	}
 ```
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Get%20Request.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Get%20Request%20V2.PNG" width="100%"></img> 
+
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Create%20Persistence%20second%20pic%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Update
 
@@ -107,7 +113,9 @@ public ResponseEntity<Movie> replaceMovie(@PathVariable Integer id, @RequestBody
   return new ResponseEntity<Movie>(movieChange, HttpStatus.ACCEPTED);
 }
 ```
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Put%20Request.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Put%20Request%20V2.PNG" width="100%"></img> 
+
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Update%20Persistence%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Delete
 
@@ -127,5 +135,8 @@ public ResponseEntity<Movie> removeMovie(@PathVariable Integer id) {
   }
 }
 ```
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Delete%20Request.PNG" width="100%"></img>
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Delete%20Request%20V2.PNG" width="100%"></img>
+
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Delete%20Persistence%20V2.PNG" width="100%"></img>
+
 
