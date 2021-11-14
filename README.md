@@ -12,6 +12,9 @@ The purpose of this project is to encapsulate concepts from all the core traingi
 - Automated Testing (JUnit) 
 
 
+## How to run project
+
+
 ## Agile 
 
 This project was create using Agile project management through Jira 
