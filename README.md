@@ -82,13 +82,13 @@ public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inser
 }
 ```
 Image below shows a 'Post Request', creating my first obect "Inception".
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Post%20Request%20V2.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Post%20Request%20V2.PNG" width="100%"></img> 
 
 This shows proof of persistence as it is stored locally in my MySQL database.
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Create%20Persistence%20V2.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Create%20Persistence%20V2.PNG" width="100%"></img> 
 
 Created another object "Shutter Island".
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Post%20Request%20second%20pic%20V2.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Post%20Request%20second%20pic%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Read
 
@@ -101,10 +101,10 @@ public ResponseEntity<List<Movie>> getMovies() {
 	}
 ```
 This image shows the 'Get Request' that reads the objects i have created, "inception" and "Shutter Island".
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Get%20Request%20V2.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Get%20Request%20V2.PNG" width="100%"></img> 
 
 Again shows proof of persistence containing both objects I have created.
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Create%20Persistence%20second%20pic%20V2.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Create%20Persistence%20second%20pic%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Update
 
@@ -118,10 +118,10 @@ public ResponseEntity<Movie> replaceMovie(@PathVariable Integer id, @RequestBody
 }
 ```
 This image below shows a 'Put Request', updating the "Shutter Island" object into another "Inception" object. Thus creating a duplicate.
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Put%20Request%20V2.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Put%20Request%20V2.PNG" width="100%"></img> 
 
 Also shown in MySQL db containing the duplicate object now.
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Update%20Persistence%20V2.PNG" width="100%"></img> 
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Update%20Persistence%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Delete
 
@@ -142,15 +142,15 @@ public ResponseEntity<Movie> removeMovie(@PathVariable Integer id) {
 }
 ```
 Since I don't need two of the same movie, I made a 'Delete Request' which removed one of the objects(movie).
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Postman%20-%20Delete%20Request%20V2.PNG" width="100%"></img>
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Delete%20Request%20V2.PNG" width="100%"></img>
 
 Now MySQL only contains one "Inception" again.
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/MySql%20-%20Delete%20Persistence%20V2.PNG" width="100%"></img>
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Delete%20Persistence%20V2.PNG" width="100%"></img>
 
 ## Coverage Test Screenshot
 
 The target coverage I had to reach in the src/main/java was a minimum of 60%. This image clearly shows that I have reached 90.5% coverage in my src/main/java. 
-<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Coverage%20Test%20Screenshot.PNG" width="100%"></img>
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Coverage%20Test%20Screenshot.PNG" width="100%"></img>
 
 # Jira Board Link
 
