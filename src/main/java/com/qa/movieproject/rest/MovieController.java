@@ -26,7 +26,7 @@ public class MovieController {
 
 	private MovieService service;
 
-	public MovieController(MovieService service) {
+	public MovieController(MovieService service) { // dependency injection from outside the class
 		super();
 		this.service = service;
 	}
@@ -47,8 +47,9 @@ public class MovieController {
 
 	// Read - getting the whole list of movies
 	@GetMapping("/getAllMovies")
-	public List<Movie> getMovies() {
-		return this.service.getMovies();
+	public ResponseEntity<List<Movie>> getMovies() {
+		List<Movie> responseBody = this.service.getMovies();
+		return new ResponseEntity<List<Movie>>(responseBody, HttpStatus.OK);
 	}
 
 	// Read - Getting a specific index in the list
@@ -62,7 +63,6 @@ public class MovieController {
 	@PutMapping("/replace-movie/{id}")
 	public ResponseEntity<Movie> replaceMovie(@PathVariable Integer id, @RequestBody Movie newMovie) {
 		System.out.println("Replacing movie with id " + id + " with " + newMovie);
-
 		Movie movieChange = this.service.replaceMovie(id, newMovie); // replaces the movie at the index
 		return new ResponseEntity<Movie>(movieChange, HttpStatus.ACCEPTED);
 	}
