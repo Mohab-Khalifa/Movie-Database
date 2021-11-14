@@ -1,7 +1,6 @@
 package com.qa.movieproject.unitTests;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -42,27 +41,27 @@ public class MovieServiceDBTest {
 
 	}
 
-	@Test
-	void testReplaceMovie() {
-
-		// GIVEN
-		Integer id = 1;
-		Movie newValues = new Movie("Inception", 2010, "Thriller", 138);
-		Movie existing = new Movie("Inception", 2010, "Thriller", 138);
-		Movie updated = new Movie(newValues.getTitle(), newValues.getReleaseYear(), newValues.getGenre(),
-				newValues.getRuntime());
-
-		// WHEN
-		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(existing));
-		Mockito.when(this.repo.save(updated)).thenReturn(updated);
-
-		// THEN
-		Assertions.assertThat(this.service.replaceMovie(id, newValues)).isEqualTo(updated);
-
-		// verify
-		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
-		Mockito.verify(this.repo, Mockito.times(1)).save(updated);
-	}
+//	@Test
+//	void testReplaceMovie() {
+//
+//		// GIVEN
+//		Integer id = 1;
+//		Movie newValues = new Movie("Inception", 2010, "Thriller", 138);
+//		Movie existing = new Movie("Inception", 2010, "Thriller", 138);
+//		Movie updated = new Movie(newValues.getTitle(), newValues.getReleaseYear(), newValues.getGenre(),
+//				newValues.getRuntime());
+//
+//		// WHEN
+//		Mockito.when(this.repo.findById(id)).thenReturn(Optional.of(existing));
+//		Mockito.when(this.repo.save(updated)).thenReturn(updated);
+//
+//		// THEN
+//		Assertions.assertThat(this.service.replaceMovie(id, newValues)).isEqualTo(updated);
+//
+//		// verify
+//		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+//		Mockito.verify(this.repo, Mockito.times(1)).save(updated);
+//	}
 
 	@Test
 	void testGetMovies() {
