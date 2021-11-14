@@ -152,4 +152,6 @@ Now MySQL only contains one "Inception" again.
 The target coverage I had to reach in the src/main/java was a minimum of 60%. This image clearly shows that I have reached 90.5% coverage in my src/main/java. 
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/feature/MKP-19/screenshots/Coverage%20Test%20Screenshot.PNG" width="100%"></img>
 
+# Jira Board Link
 
+https://mohabkhalifa.atlassian.net/jira/software/projects/MKP/boards/1
