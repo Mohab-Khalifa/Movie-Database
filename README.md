@@ -1,5 +1,25 @@
 # DFEFinal Project - Movie-Database
 
+## Table of Contents
+- [Introduction](#introduction)
+- [How to run the project](#how-to-run-the-project)
+	- [How to run the jar](#how-to-run-the-jar)
+- [Agile](#agile)
+- [Scope](#scope)
+- [Why are we doing this?](#why-are-we-doing-this)
+- [How I expected the challenge to go](#how-i-expected-the-challenge-to-go)
+- [What went well?](#what-went-well)
+- [What did not go as planned?](#what-did-not-go-as-planned)
+- [Possible improvements](#possible-improvements)
+- [Functionality Screenshots](#functionality-screenshots)
+	- [Postman requests and the output from the API](#postman-requests-and-the-output-from-the-api)
+		- [CRUD - Create](#crud---create)
+		- [CRUD - Read](#crud---read)
+		- [CRUD - Update](#crud---update)
+		- [CRUD - Delete](#crud---delete)
+	- [Coverage Test Screenshot](#coverage-test-screenshot)
+- [Jira Board Link](#jira-board-link)
+
 
 ## Introduction
 
@@ -10,6 +30,26 @@ The purpose of this project is to encapsulate concepts from all the core traingi
 - Programming Fundamentals (Java) 
 - API Development (Spring Boot) 
 - Automated Testing (JUnit) 
+
+
+# How to run the project
+
+## How to run the jar
+
+- You must cd to the location of the jar file 
+- Create an application.properties file in the same folder as the jar. 
+- The contents of the application .properties file will be as below:
+```
+server.port=8080
+
+# configured MySQL database
+spring.datasource.url=jdbc:mysql://localhost:3306/<your_db>
+spring.datasource.username=<username>
+spring.datasource.password=<password>
+
+spring.jpa.hibernate.ddl-auto=create
+```
+- Run the jar using 'java -jar SpringMovieProjectNew-0.0.1-SNAPSHOT.jar'
 
 
 ## Agile 
@@ -47,7 +87,7 @@ Based on all the quality of teaching in the QA Academy, I believed they prepared
 - Integration testing went better than expected, although there were some mishaps I had to overcome
 
 
-## What didn't go as planned? 
+## What did not go as planned? 
 
 - I found Jira difficult to stick to as I had little to no practise with it 
 - I did not stick to my Jira plan as well as I wanted to 
@@ -69,9 +109,10 @@ Based on all the quality of teaching in the QA Academy, I believed they prepared
 
 # Functionality Screenshots 
 
-## Postman requests & the output from the API 
+## Postman requests and the output from the API 
 
 ### CRUD - Create 
+The java method (in the (MovieController)[https://github.com/Mohab-Khalifa/Movie-Database/blob/main/src/main/java/com/qa/movieproject/rest/MovieController.java] class) which is mapped to the /add-movie endpoint
 
 ```
 // Create - adding a movie
@@ -84,13 +125,34 @@ public ResponseEntity<Movie> createMovie(@RequestBody Movie newMovie) { // inser
 Image below shows a 'Post Request', creating my first obect "Inception".
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Post%20Request%20V2.PNG" width="100%"></img> 
 
+Here is the JSON snippet for CREATE:
+```
+{
+    "title": "Inception",
+    "releaseYear": 2010,
+    "genre": "Thriller",
+    "runtime": 148
+}
+```
+
 This shows proof of persistence as it is stored locally in my MySQL database.
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Create%20Persistence%20V2.PNG" width="100%"></img> 
 
 Created another object "Shutter Island".
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Post%20Request%20second%20pic%20V2.PNG" width="100%"></img> 
 
+Second JSON snippet for second CREATE:
+```
+{
+    "title": "Shutter Island",
+    "releaseYear": 2010,
+    "genre": "Thriller",
+    "runtime": 148
+}
+```
+
 ### CRUD - Read
+The java method (in the (MovieController)[https://github.com/Mohab-Khalifa/Movie-Database/blob/main/src/main/java/com/qa/movieproject/rest/MovieController.java] class) which is mapped to the /getAllMovies and /get-movie/{id} endpoints
 
 ```
 // Read - getting the whole list of movies
@@ -100,13 +162,26 @@ public ResponseEntity<List<Movie>> getMovies() {
   return new ResponseEntity<List<Movie>>(responseBody, HttpStatus.OK);
 	}
 ```
-This image shows the 'Get Request' that reads the objects i have created, "inception" and "Shutter Island".
+
+```
+// Read - Getting a specific index in the list
+@GetMapping("/get-movie/{id}") // picks movie with id of {id}
+public ResponseEntity<Movie> getMovie(@PathVariable Integer id) {
+	Movie responseBody = this.service.getMovie(id);
+	return new ResponseEntity<Movie>(responseBody, HttpStatus.OK);
+}
+```
+This image shows the 'Get Request' that reads ALL the objects i have created, "inception" and "Shutter Island".
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Get%20Request%20V2.PNG" width="100%"></img> 
+
+This image shows the 'Get Request' that only reads one object which I have selected by id. In this instance it reads the "Shutter Island" option which is in index 2.
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/develop/screenshots/Postman%20-%20Get%20Request%20By%20ID.PNG" width="100%"></img>
 
 Again shows proof of persistence containing both objects I have created.
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Create%20Persistence%20second%20pic%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Update
+The java method (in the (MovieController)[https://github.com/Mohab-Khalifa/Movie-Database/blob/main/src/main/java/com/qa/movieproject/rest/MovieController.java] class) which is mapped to the /replace-movie/{id} endpoint
 
 ```
 // Update
@@ -120,10 +195,21 @@ public ResponseEntity<Movie> replaceMovie(@PathVariable Integer id, @RequestBody
 This image below shows a 'Put Request', updating the "Shutter Island" object into another "Inception" object. Thus creating a duplicate.
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Put%20Request%20V2.PNG" width="100%"></img> 
 
+Here's the snippet of JSON code I used for UPDATE:
+```
+{
+    "title": "Inception",
+    "releaseYear": 2010,
+    "genre": "Thriller",
+    "runtime": 138
+}
+```
+
 Also shown in MySQL db containing the duplicate object now.
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Update%20Persistence%20V2.PNG" width="100%"></img> 
 
 ### CRUD - Delete
+The java method (in the (MovieController)[https://github.com/Mohab-Khalifa/Movie-Database/blob/main/src/main/java/com/qa/movieproject/rest/MovieController.java] class) which is mapped to the /remove-movie/{id} endpoint
 
 ```
 // Delete
@@ -151,6 +237,10 @@ Now MySQL only contains one "Inception" again.
 
 The target coverage I had to reach in the src/main/java was a minimum of 60%. This image clearly shows that I have reached 90.5% coverage in my src/main/java. 
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Coverage%20Test%20Screenshot.PNG" width="100%"></img>
+
+Dislaimer: I aim to complete stretch goals after the Software Developer Bootcamp. I realised I did not have time to attempt them during the given time period.
+
+Would like to thank all my teachers at QA for such a wonderful experience!
 
 # Jira Board Link
 
