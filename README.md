@@ -9,14 +9,14 @@
 - [Why are we doing this?](#why-are-we-doing-this)
 - [How I expected the challenge to go](#how-i-expected-the-challenge-to-go)
 - [What went well?](#what-went-well)
-- [What didn't go as planned?](what-didn't-go-as-planned)
+- [What did not go as planned?](#what-did-not-go-as-planned)
 - [Possible improvements](#possible-improvements)
 - [Functionality Screenshots](#functionality-screenshots)
-	- [Postman requests & the output from the API](postman-requests-&-the-output-from-the-api)
-		- [CRUD - Create](crud---create)
-		- [CRUD - Read](crud---read)
-		- [CRUD - Update](crud---update)
-		- [CRUD - Delete](crud---delete)
+	- [Postman requests and the output from the API](#postman-requests-and-the-output-from-the-api)
+		- [CRUD - Create](#crud---create)
+		- [CRUD - Read](#crud---read)
+		- [CRUD - Update](#crud---update)
+		- [CRUD - Delete](#crud---delete)
 	- [Coverage Test Screenshot](#coverage-test-screenshot)
 - [Jira Board Link](#jira-board-link)
 
@@ -87,7 +87,7 @@ Based on all the quality of teaching in the QA Academy, I believed they prepared
 - Integration testing went better than expected, although there were some mishaps I had to overcome
 
 
-## What didn't go as planned? 
+## What did not go as planned? 
 
 - I found Jira difficult to stick to as I had little to no practise with it 
 - I did not stick to my Jira plan as well as I wanted to 
@@ -109,7 +109,7 @@ Based on all the quality of teaching in the QA Academy, I believed they prepared
 
 # Functionality Screenshots 
 
-## Postman requests & the output from the API 
+## Postman requests and the output from the API 
 
 ### CRUD - Create 
 The java method (in the (MovieController)[https://github.com/Mohab-Khalifa/Movie-Database/blob/main/src/main/java/com/qa/movieproject/rest/MovieController.java] class) which is mapped to the /add-movie endpoint
