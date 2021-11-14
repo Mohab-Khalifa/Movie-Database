@@ -171,8 +171,11 @@ public ResponseEntity<Movie> getMovie(@PathVariable Integer id) {
 	return new ResponseEntity<Movie>(responseBody, HttpStatus.OK);
 }
 ```
-This image shows the 'Get Request' that reads the objects i have created, "inception" and "Shutter Island".
+This image shows the 'Get Request' that reads ALL the objects i have created, "inception" and "Shutter Island".
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/Postman%20-%20Get%20Request%20V2.PNG" width="100%"></img> 
+
+This image shows the 'Get Request' that only reads one object which I have selected by id. In this instance it reads the "Shutter Island" option which is in index 2.
+<img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/develop/screenshots/Postman%20-%20Get%20Request%20By%20ID.PNG" width="100%"></img>
 
 Again shows proof of persistence containing both objects I have created.
 <img src="https://github.com/Mohab-Khalifa/Movie-Database/blob/main/screenshots/MySql%20-%20Create%20Persistence%20second%20pic%20V2.PNG" width="100%"></img> 
